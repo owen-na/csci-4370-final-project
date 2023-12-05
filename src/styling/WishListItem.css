@@ -1,0 +1,31 @@
+.main {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+}
+
+.middle-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.add-to-cart {
+    background-color: #6184FF;
+    border-radius: 10%;
+}
+
+.remove-from-wishlist {
+    background-color: transparent;
+}
+
+:hover .remove-from-wishlist {
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -12,7 +12,7 @@ export default function SignUp({ setLoggedIn }) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("Thanks for registering!")
+        alert("Thanks for registering!");
         console.log(userCredential);
       })
       .catch((error) => {
