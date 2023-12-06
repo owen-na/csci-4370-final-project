@@ -1,0 +1,12 @@
+.card {
+    width: 85vw;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+}
+
+.middle-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
