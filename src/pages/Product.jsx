@@ -1,18 +1,17 @@
-export default function Product() {
+export default function Product(props) {
   return (
     <div className="page">
       <div className="product-name">
-        <p>product name</p>
         <p>⭐⭐⭐⭐⭐ (number_ratings)</p>
       </div>
       <div className="middle-section">
-        <img alt="product-image"></img>
+        <img src={props.image} alt={props.name}></img>
         <div className="info">
-          <text>description placeholder</text>
+          <text>{props.name}</text>
           <div className="actions">
-            <p>$price</p>
-            <button>add to cart</button>
-            <button>add to wishlist</button>
+            <p>{props.price}</p>
+            <button>ADD TO CART</button>
+            <button>ADD TO WISHLIST</button>
           </div>
         </div>
       </div>
