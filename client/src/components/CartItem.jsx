@@ -1,12 +1,12 @@
 import "../styling/CartItem.css";
 
-function CartItem() {
+function CartItem(props) {
   return (
     <div className="card">
-      <img alt="product-image"></img>
+      <img src={props.image} alt="product-image"></img>
       <div className="middle-section">
-        <p>product name</p>
-        <p className="price">$price</p>
+        <p>{props.name}</p>
+        <p className="price">{props.price}</p>
       </div>
       <button>🗑️ Remove</button>
     </div>
