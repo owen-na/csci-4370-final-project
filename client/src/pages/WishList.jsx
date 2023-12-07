@@ -1,4 +1,5 @@
 import WishListItem from "../components/WishListItem";
+import "../styling/WishList.css";
 
 export default function WishList() {
   return (
