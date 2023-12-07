@@ -1,15 +1,18 @@
 .mainpage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 18vh;
-    background-color: #494949;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 18vh;
+  background-color: #494949;
+}
+.cart-text h1 {
+  color: white;
 }
