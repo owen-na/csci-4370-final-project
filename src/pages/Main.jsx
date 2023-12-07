@@ -6,7 +6,7 @@ const Main = () => {
     <main>
       <div className="product-holder">
         <Product></Product>
-        <Link to="/pages/WishList">wishlist</Link>
+        <Link to="./pages/WishList">wishlist</Link>
       </div>
     </main>
   );
