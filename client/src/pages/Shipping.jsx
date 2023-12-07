@@ -1,7 +1,7 @@
 export default function Shipping() {
   return (
     <div>
-      <p>Shipping Information</p>
+      <h1>Shipping Information</h1>
       <form action="/shipping">
         <label for="address">Street Address</label>
         <input type="text" id="street-address"></input>
