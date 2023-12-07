@@ -2,8 +2,8 @@ export default function Shipping() {
   return (
     <div>
       <p>Shipping Information</p>
-      <form>
-        <label for="street-address">Street Address</label>
+      <form action="/shipping">
+        <label for="address">Street Address</label>
         <input type="text" id="street-address"></input>
 
         <label for="town-city">Town/City</label>
