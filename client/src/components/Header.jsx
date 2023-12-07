@@ -4,7 +4,9 @@ const Header = () => {
     <header>
       <div className="wrapper">
         <div className="logo-wrapper">
-          <img src={logo} alt="temo logo"></img>
+          <button className="logo-button">
+            <img src={logo} alt="temo logo"></img>
+          </button>
         </div>
         <div>
           <button>Login</button>
