@@ -1,6 +1,7 @@
+import "../styling/Shipping.css";
 export default function Shipping() {
   return (
-    <div>
+    <div className="shipping-container">
       <h1>Shipping Information</h1>
       <form action="/shipping">
         <label for="address">Street Address</label>
