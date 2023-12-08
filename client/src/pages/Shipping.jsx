@@ -1,8 +1,10 @@
 import "../styling/Shipping.css";
 export default function Shipping() {
   return (
-    <div>
-      <p>Shipping Information</p>
+    <div className="shipping-container">
+      <div className="shipping-header">
+        <h1>Shipping Information</h1>
+      </div>
       <form action="/shipping">
         <label for="address">Street Address</label>
         <input type="text" id="street-address"></input>
