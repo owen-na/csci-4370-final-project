@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import Main from "./pages/Main.jsx";
 import Wishlist from "./pages/WishList.jsx";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import Cart from "./pages/Cart.jsx";
 function App() {
   return (
     <>
