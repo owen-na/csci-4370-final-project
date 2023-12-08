@@ -8,7 +8,7 @@ export default function Product(props) {
   useEffect(() => {
     async function fetchProductDetails() {
       try {
-        const res = await fetch(`/products/${productID}`);
+        const res = await fetch(`/product/${productID}`);
         const data = await res.json();
         setProduct(data);
       } catch (error) {
