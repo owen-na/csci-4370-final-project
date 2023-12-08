@@ -26,7 +26,6 @@ const Main = () => {
             price={product.price}
           />;
         })}
-
         <Link to="/pages/WishList">wishlist</Link>
       </div>
     </main>

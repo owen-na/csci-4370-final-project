@@ -20,6 +20,7 @@ export default function Cart() {
       <div className="cart-text">
         <h1>Cart</h1>
       </div>
+      <div className="item-list">
       {cartProducts.map((product) => {
         <CartItem
           name={product.name}
@@ -28,6 +29,7 @@ export default function Cart() {
         />;
       })}
       {/* some sort of function to load these as intended instead of statically */}
+      </div>
       <button>PROCEED TO CHECKOUT</button>
     </div>
   );
