@@ -72,7 +72,7 @@ export default function Product() {
           <div className="actions">
             <p>{product.price}</p>
             <button onclick={handleCartSubmit()}>ADD TO CART</button>
-            <button onclick={handleWishlistSubmit}>ADD TO WISHLIST</button>
+            <button onclick={handleWishlistSubmit()}>ADD TO WISHLIST</button>
           </div>
         </div>
       </div>
