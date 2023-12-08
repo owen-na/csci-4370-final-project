@@ -9,9 +9,9 @@
 /node_modules
 # testing
 /coverage
-
+/target
 # production
-/build
+/final-project/target
 
 # misc
 .DS_Store

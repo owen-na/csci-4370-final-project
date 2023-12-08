@@ -19,6 +19,7 @@ const Main = () => {
       <div className="product-holder">
         {products.map((product) => (
           <Product
+            id={product.id}
             name={product.name}
             image={product.image}
             rating={product.rating}
