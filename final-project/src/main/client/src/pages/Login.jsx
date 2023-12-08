@@ -1,57 +1,51 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { auth } from "../../src/firebase";
 import { Link, useNavigate } from "react-router-dom";
-import Card from "../Components/Card/Card";
-import "../styles/login.css";
+import "../styling/Login.css";
 
-export default function Login({ setLoggedIn }) {
-  const [email, setEmail] = useState("");
+export default function Login() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate(); 
 
-  const signIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        setIsLoggedIn(true);
-        setLoggedIn(true);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  async function handleSubmit(event) {
+    event.preventDefault(); // prevent default page refreshing
+    /*
+    * Sending a post request to the server to with the username and password
+    */
+    const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ "username" : username , "password" : password}),
+    });
 
-  if (isLoggedIn) {
-    return <Card isLoggedIn={true} loggedIn={true} />;
-  }
+    if (response.ok) {
+      console.log("Success")
+      const { user_id } = await response.json();
+      navigate(`/pages/user/${user_id}`)
+    } else {
+        console.error("Error while sending POST request");
+    }
+}
+  
   return (
-    <div className="sign-in-container">
-      <form onSubmit={signIn}>
-        <h1>Log In to your Account</h1>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-        <button type="submit">Log In</button>
-      </form>
-      <p>
-        Need an account? <Link to="/Pages/SignUp">Sign Up</Link>
-      </p>
+    <div className="sign-in-container" >
+      <form onSubmit={handleSubmit}>
+            <div>
+            <input type="text"
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Username"></input>
+            </div>
+            <div>
+            <input type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"></input>
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
     </div>
   );
 }
-
-// need onSession checker
-// need to make sure form connects to db later
