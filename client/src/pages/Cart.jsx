@@ -28,7 +28,7 @@ export default function Cart() {
         />;
       })}
       {/* some sort of function to load these as intended instead of statically */}
-      <button>PROCEED TO CHECKOUT</button>
+      <button className="checkout-button">PROCEED TO CHECKOUT</button>
     </div>
   );
 }
