@@ -1,10 +1,15 @@
 import CartItem from "../components/CartItem";
 import "../styling/Cart.css";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+
 export default function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
   const { user_id } = useParams();
+  const navigate = useNavigate();
+  function handleClick() {
+    navigate(`/pages/shipping/${user_id}`)
+  }
   async function getCartItems() {
     try {
       const res = await fetch(`/cart/${user_id}`, {
@@ -49,7 +54,7 @@ export default function Cart() {
           />
         ))}
         {/* some sort of function to load these as intended instead of statically */}
-        <button className="checkout-button">PROCEED TO CHECKOUT</button>
+        <button className="checkout-button" onClick={handleClick}>PROCEED TO CHECKOUT</button>
       </div>
     </div>
   );

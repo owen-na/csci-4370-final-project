@@ -14,6 +14,7 @@ import java.util.List;
 import javax.naming.spi.DirStateFactory.Result;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,7 +40,7 @@ public class WebController {
       this.conn =
         DriverManager.getConnection(
           "jdbc:mysql://localhost:33306/itstore?" +
-          "user=root&password=mysqlpass"
+          "user=root&password=Lekhoa699"
         );
       System.out.println("Connection successful");
     } catch (SQLException sqle) {
@@ -286,10 +287,17 @@ public class WebController {
     @PathVariable("product_id") String product_id,
     @RequestParam("user_id") String user_id
   ) {
-    System.out.println(product_id);
-    System.out.println(user_id);
-    System.out.println("clciked");
-    return null;
+    try {
+        String query = "DELETE FROM CartProduct WHERE product_id=" + product_id;
+        PreparedStatement st = conn.prepareStatement(query);
+        st.execute();
+    } catch (SQLException sqle) {
+        // handle any errors
+      System.out.println("SQLException: " + sqle.getMessage());
+      System.out.println("SQLState: " + sqle.getSQLState());
+      System.out.println("VendorError: " + sqle.getErrorCode());
+    }
+    return new ResponseEntity<String>(HttpStatus.OK);
   }
 }
 
