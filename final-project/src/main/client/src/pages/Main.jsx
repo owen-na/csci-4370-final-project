@@ -20,7 +20,7 @@ const Main = () => {
         {products.map((product) => (
           <Link key={product.id} to={`/product/${product.id}`}>
             <Product
-              id={product.id}
+              id={product.product_id}
               name={product.name}
               image={product.image}
               rating={product.rating}
