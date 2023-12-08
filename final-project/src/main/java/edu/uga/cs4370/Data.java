@@ -8,12 +8,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
+
 
 public class Data {
     public Connection conn = null;
@@ -37,7 +33,7 @@ public class Data {
         String query = "CREATE TABLE Customer (" +
         "customer_id INT UNIQUE NOT NULL AUTO_INCREMENT, " +
         "username VARCHAR(25), " + 
-        "password VARCHAR(50), " +
+        "password TEXT, " +
         "name VARCHAR(25))";
         st = conn.prepareStatement(query);
         st.execute();
@@ -268,7 +264,7 @@ public class Data {
     }
     public static void main(String[] args) {
         Data data = new Data();
+        data.initializeTables();
         data.initializeData();
-        //data.initializeTables();
     }
 }

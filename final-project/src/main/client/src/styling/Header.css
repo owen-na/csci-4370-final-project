@@ -5,3 +5,6 @@
 .logo-button:focus {
     outline: revert;
 } 
+header {
+    margin-bottom: 10%;
+}
