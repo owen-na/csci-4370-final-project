@@ -1,2 +1,46 @@
-.shipping-container {
-}
+div {
+    width: 80%;
+    margin: auto;
+    background-color: #ecf0f1; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  /* Form styles */
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  /* Label styles */
+  label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Input styles */
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+  }
+  
+  /* Submit button styles */
+  input[type="submit"] {
+    grid-column: span 2; 
+    background-color: #3498db; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #2980b9; 
+  }
