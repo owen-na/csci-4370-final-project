@@ -1,8 +1,8 @@
 import "../styling/Product.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-export default function Product({isLoggedIn}) {
-  const { productID } = useParams();
+export default function Product() {
+  const { productID , user_id} = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -23,13 +23,15 @@ export default function Product({isLoggedIn}) {
   }, [productID]);
 
   async function handleCartSubmit(event) {
+    console.log(user_id)
+    console.log(productID)
     event.preventDefault();
     const response = await fetch("/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ product }),
+      body: JSON.stringify({ user_id, productID }),
     });
 
     if (response.ok) {
@@ -71,15 +73,14 @@ export default function Product({isLoggedIn}) {
           <text>{product.name}</text>
           <div className="actions">
             <p>{product.price}</p>
-            <button onclick={handleCartSubmit()}>ADD TO CART</button>
-            <button onclick={handleWishlistSubmit()}>ADD TO WISHLIST</button>
+            <button onClick={handleCartSubmit}>ADD TO CART</button>
+            <button onClick={handleWishlistSubmit}>ADD TO WISHLIST</button>
           </div>
         </div>
       </div>
       <div className="reviews">
         <p>Reviews</p>
         <button>Add Review</button>
-        {/* need review component here, need some planning-ish */}
       </div>
     </div>
   );

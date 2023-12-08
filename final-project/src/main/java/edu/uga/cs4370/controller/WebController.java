@@ -171,6 +171,14 @@ public class WebController {
         return ResponseEntity.status(HttpStatus.OK).body("{\"user_id\": " + user_id + "}");  // Redirect to the main page
     
     }
+    @PostMapping("cart")
+    public ResponseEntity<String> addCart(@RequestBody CartProduct cartProduct) {
+        System.out.println(cartProduct.user_id);
+        System.out.println(cartProduct.productID);
+        return null;
+
+    }
+
 }
 
 class Product {
@@ -199,4 +207,9 @@ class User {
   public String username;
   public String password;
   public String name;
+}
+
+class CartProduct{
+    public String user_id;
+    public String productID;
 }
