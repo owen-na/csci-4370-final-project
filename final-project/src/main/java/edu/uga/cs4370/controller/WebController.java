@@ -40,7 +40,7 @@ public class WebController {
       this.conn =
         DriverManager.getConnection(
           "jdbc:mysql://localhost:33306/itstore?" +
-          "user=root&password=mysqlpass"
+          "user=root&password=Lekhoa699"
         );
       System.out.println("Connection successful");
     } catch (SQLException sqle) {
@@ -91,6 +91,7 @@ public class WebController {
     String password = user.password;
     String salt = BCrypt.gensalt();
     String hashPassword = BCrypt.hashpw(password, salt);
+    System.out.println(hashPassword);
     String username = user.username;
     String name = user.name;
     try {

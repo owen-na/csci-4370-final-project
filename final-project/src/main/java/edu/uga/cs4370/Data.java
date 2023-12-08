@@ -19,7 +19,7 @@ public class Data {
       conn =
         DriverManager.getConnection(
           "jdbc:mysql://localhost:33306/itstore?" +
-          "user=root&password=mysqlpass"
+          "user=root&password=Lekhoa699"
         );
       System.out.println("Connection successful");
     } catch (SQLException sqle) {
