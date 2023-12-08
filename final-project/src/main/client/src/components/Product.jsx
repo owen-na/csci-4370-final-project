@@ -1,8 +1,10 @@
+import "../styling/ProductItem.css";
+
 function Product(props) {
   return (
     <div className="product-container">
       <div className="image-container">
-        <img src={props.image}/>
+        <img className="prod-image" src={props.image} />
       </div>
       <div className="name-container">
         <p className="name-text">{props.name}</p>

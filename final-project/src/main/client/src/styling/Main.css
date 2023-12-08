@@ -1,0 +1,8 @@
+.product-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2.5% auto 0 auto;
+    width: 90vw;
+    /* height: 80vh; */
+}
