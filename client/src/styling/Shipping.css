@@ -1,2 +1,10 @@
 .shipping-container {
+    width: 85vw;
+    margin: auto;
+}
+
+.shipping-container form {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
