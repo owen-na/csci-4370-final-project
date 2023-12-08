@@ -40,7 +40,7 @@ public class WebController {
       this.conn =
         DriverManager.getConnection(
           "jdbc:mysql://localhost:33306/itstore?" +
-          "user=root&password=Lekhoa699"
+          "user=root&password=mysqlpass"
         );
       System.out.println("Connection successful");
     } catch (SQLException sqle) {
@@ -229,7 +229,7 @@ public class WebController {
     List<Product> products = new ArrayList<>();
     String query =
       "SELECT * FROM WishlistProduct JOIN Product ON WishlistProduct.product_id = Product.product_id " +
-      "JOIN Wishlist ON WishlistProduct.cart_id = Wishlist.cart_id WHERE Wishlist.customer_id =" +
+      "JOIN Wishlist ON WishlistProduct.wishlist_id = Wishlist.wishlist_id WHERE Wishlist.customer_id =" +
       user_id;
     try {
       PreparedStatement st = conn.prepareStatement(query);
@@ -288,11 +288,11 @@ public class WebController {
     @RequestParam("user_id") String user_id
   ) {
     try {
-        String query = "DELETE FROM CartProduct WHERE product_id=" + product_id;
-        PreparedStatement st = conn.prepareStatement(query);
-        st.execute();
+      String query = "DELETE FROM CartProduct WHERE product_id=" + product_id;
+      PreparedStatement st = conn.prepareStatement(query);
+      st.execute();
     } catch (SQLException sqle) {
-        // handle any errors
+      // handle any errors
       System.out.println("SQLException: " + sqle.getMessage());
       System.out.println("SQLState: " + sqle.getSQLState());
       System.out.println("VendorError: " + sqle.getErrorCode());

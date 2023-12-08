@@ -26,8 +26,8 @@ export default function Product() {
   }, [productID]);
 
   async function handleCartSubmit(event) {
-    console.log(user_id)
-    console.log(productID)
+    console.log(user_id);
+    console.log(productID);
     event.preventDefault();
     const response = await fetch("/cart", {
       method: "POST",
@@ -41,11 +41,12 @@ export default function Product() {
       console.log("Received response from server");
     } else {
       console.error("Error while sending POST request");
+      console.log(user_id);
     }
   }
   async function handleWishlistSubmit(event) {
     event.preventDefault();
-    const response = await fetch("/wishlist", {
+    const response = await fetch(`/wishlist/${user_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
