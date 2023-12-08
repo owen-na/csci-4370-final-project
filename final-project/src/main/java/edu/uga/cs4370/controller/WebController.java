@@ -55,6 +55,7 @@ public class WebController {
             int i = 0;
             while (res.next() && i < 50) {
                 Product prod = new Product();
+                prod.product_id = ""+res.getInt("product_id");
                 prod.name = res.getString("name_desc");
                 prod.image = res.getString("image");
                 prod.stars = ""+res.getFloat("stars");
@@ -113,6 +114,8 @@ class Product {
     public String image;
     @JsonProperty("price")
     public String price;
+    @JsonProperty("product_id")
+    public String product_id;
 }
 class User {
     public String username;
