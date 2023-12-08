@@ -46,12 +46,12 @@ export default function Product() {
   }
   async function handleWishlistSubmit(event) {
     event.preventDefault();
-    const response = await fetch(`/wishlist/${user_id}`, {
+    const response = await fetch(`/wishlist`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ product }),
+      body: JSON.stringify({ user_id, productID }),
     });
 
     if (response.ok) {

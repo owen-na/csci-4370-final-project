@@ -224,6 +224,37 @@ public class WebController {
     return null;
   }
 
+  @PostMapping("wishlist")
+  public ResponseEntity<String> addWishlist(
+    @RequestBody CartProduct wishlistProduct
+  ) {
+    String query =
+      "SELECT Wishlist.wishlist_id from Wishlist JOIN Customer ON Wishlist.wishlist_id = Customer.wishlist_id WHERE Customer.customer_id=" +
+      wishlistProduct.user_id;
+    try {
+      PreparedStatement st = conn.prepareStatement(query);
+      ResultSet res = st.executeQuery();
+      if (res.next()) {
+        int wish = res.getInt("wish_id");
+        query =
+          "INSERT INTO WishlistProduct(wishlist_id, product_id) VALUES (" +
+          wish +
+          "," +
+          wishlistProduct.productID +
+          ")";
+        st = conn.prepareStatement(query);
+        st.execute();
+      }
+    } catch (SQLException sqle) {
+      // handle any errors
+      System.out.println("SQLException: " + sqle.getMessage());
+      System.out.println("SQLState: " + sqle.getSQLState());
+      System.out.println("VendorError: " + sqle.getErrorCode());
+    }
+
+    return null;
+  }
+
   @GetMapping("wishlist/{user_id}")
   public List<Product> getWishlist(@PathVariable String user_id) {
     List<Product> products = new ArrayList<>();
