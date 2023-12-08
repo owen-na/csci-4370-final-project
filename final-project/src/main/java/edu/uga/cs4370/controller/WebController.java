@@ -102,7 +102,7 @@ public class WebController {
                 .header("Location", "/").body("ok");  // Redirect to the main page
     
     }
-    @GetMapping("products/{product_id}")
+    @GetMapping("product/{product_id}")
     public Product getProduct(@PathVariable String product_id) {
         Product prod = new Product();
         try {
