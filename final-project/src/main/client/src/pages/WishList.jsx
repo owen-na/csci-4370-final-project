@@ -1,6 +1,8 @@
 import WishListItem from "../components/WishListItem";
 import "../styling/WishList.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
+
 export default function WishList() {
   const { wishlist_id } = useParams();
   const [products, setProducts] = useState([]);

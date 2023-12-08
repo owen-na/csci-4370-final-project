@@ -12,6 +12,7 @@ export default function User() {
     try {
       const res = await fetch("/products");
       setProducts(await res.json());
+      console.log(user_id)
     } catch (err) {
       console.log(err);
     }
@@ -22,7 +23,7 @@ export default function User() {
             <h1>Hello User</h1>
           </header>
             <div>
-              <button>View Your Cart</button>
+              <Link key={user_id} to={`/pages/Cart/${user_id}`}><button>View Your Cart</button></Link>
               <button>Add A Wishlist</button>
               <button>View your Wishlist</button>
               <button>View Purchase History</button>

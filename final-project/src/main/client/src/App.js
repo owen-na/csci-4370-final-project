@@ -17,11 +17,11 @@ function App() {
       <Routes>
         <Route path="pages/WishList" element={<Wishlist />} />
         <Route path="/" element={<Main />} />
-        <Route path="pages/Cart" element={<Cart />} />
         <Route path="pages/Shipping" element={<Shipping />} />
         <Route path="pages/product/:productID" element={<Product />} />
         <Route path="pages/SignUp" element={<SignUp />} />
         <Route path="pages/Login" element={<Login />} />
+        <Route path="pages/Cart/:user_id" element={<Cart />} />
         <Route path="pages/user/:user_id" element={<User/>} />
       </Routes>
     </>
