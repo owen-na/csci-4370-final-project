@@ -1,9 +1,9 @@
 import "../styling/Product.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-export default function Product(props) {
+export default function Product() {
   const { productID } = useParams();
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     async function fetchProductDetails() {
@@ -19,13 +19,10 @@ export default function Product(props) {
     fetchProductDetails();
   }, [productID]);
 
-  if (!product) {
-    return <div>Loading...</div>;
-  }
   return (
     <div className="page">
       <div className="product-name">
-        <p>⭐⭐⭐⭐⭐ {product.ratingcount}</p>
+        <p>⭐⭐⭐⭐⭐ {product.rating_count}</p>
       </div>
       <div className="middle-section">
         <img src={product.image} alt={product.name}></img>
