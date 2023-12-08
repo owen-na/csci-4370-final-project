@@ -1,5 +1,6 @@
 import Product from "../components/Product";
 import { Link } from "react-router-dom";
+import "../styling/Main.css";
 import { useState, useEffect } from "react";
 const Main = () => {
   const [products, setProducts] = useState([]);
@@ -14,23 +15,35 @@ const Main = () => {
       console.log(err);
     }
   }
+  function productLoop() {
+    const rows = [];
+
+    for (let i = 0; i < 100; i += 20) {
+      const row = products
+        .slice(i, i + 20)
+        .map((product) => (
+          <Product
+            key={product.id}
+            name={product.name}
+            image={product.image}
+            rating={product.rating}
+            amountOfRatings={product.rating_count}
+            price={product.price}
+          />
+        ));
+
+      rows.push(
+        <div className="product-row" key={i / 20}>
+          {row}
+        </div>
+      );
+    }
+
+    return rows;
+  }
   return (
     <main>
-      <div className="product-holder">
-        {products.map((product) => (
-          <Link key={product.id} to={`/pages/product/${product.product_id}`}>
-            <Product
-              id={product.product_id}
-              name={product.name}
-              image={product.image}
-              rating={product.rating}
-              ratingcount={product.rating_count}
-              price={product.price}
-            />
-          </Link>
-        ))}
-        <Link to="/pages/WishList">wishlist</Link>
-      </div>
+      <div className="product-holder">{productLoop()}</div>
     </main>
   );
 };

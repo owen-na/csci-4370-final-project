@@ -1,16 +1,78 @@
 .page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.product-name {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.middle-section {
+  height: 50vh;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 30%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.product-container {
+  border: 10px solid green;
+}
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.reviews p {
+  float: left;
+}
+
+.reviews button {
+  float: right;
+}
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+.product-row {
+  background-color: #f3fcf0;
+}
+/* .page {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .product-name {
-    width: 100vw;
+    width: 20vw;
     height: 10vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.product-name p {
+    font-size: 1.5em;
 }
 
 .middle-section {
@@ -18,18 +80,21 @@
     width: inherit;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
     width: 50%;
     height: 30%;
 }
 
 .actions {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,4 +113,64 @@
 
 .reviews button {
     float: right;
+} */
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.product-name {
+  width: 20vw;
+  height: 10vh;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.product-name p {
+  font-size: 1.5em;
+  margin-left: 10%;
+}
+
+.middle-section {
+  height: 50vh;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  width: 50%;
+  height: 30%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between; /* Adjust spacing between items */
+  align-items: center;
+  width: 80%;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.reviews p {
+  float: left;
+}
+
+.reviews button {
+  float: right;
+  width: 20%;
+}
+.actions p {
+  margin-right: 20px;
 }
