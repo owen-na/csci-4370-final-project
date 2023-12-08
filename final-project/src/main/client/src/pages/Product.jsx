@@ -24,7 +24,7 @@ export default function Product() {
 
   async function handleCartSubmit(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:8080/cart", {
+    const response = await fetch("/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default function Product() {
   }
   async function handleWishlistSubmit(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:8080/wishlist", {
+    const response = await fetch("/wishlist", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

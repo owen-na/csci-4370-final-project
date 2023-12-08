@@ -1,6 +1,11 @@
 import "../styling/WishListItem.css";
 
 function WishListItem(props) {
+  function deleteButton() {
+    if (props.delete === true) {
+      return () => props.onDelete(props.name, props.id);
+    }
+  }
   return (
     <div className="main">
       <img className="product-image" src={props.image} alt="item-image"></img>

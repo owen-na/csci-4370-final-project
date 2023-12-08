@@ -14,6 +14,16 @@ export default function WishList() {
       console.log(err);
     }
   }
+  async function deleteItem(userID, productID) {
+    const response = await fetch(`/wishlist/${userID}/${productID}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      getProductList();
+    } else {
+      console.error("Error while sending POST request");
+    }
+  }
   return (
     <div className="main-page">
       <div className="header">
@@ -21,11 +31,13 @@ export default function WishList() {
       </div>
       {products.map((product) => (
         <WishListItem
+          id={product.id}
           name={product.name}
           image={product.image}
           rating={product.rating}
           amountOfRatings={product.rating_count}
           price={product.price}
+          onDelete={() => deleteItem()}
         />
       ))}
     </div>
