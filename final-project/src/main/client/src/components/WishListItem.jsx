@@ -3,7 +3,7 @@ import "../styling/WishListItem.css";
 function WishListItem(props) {
   function deleteButton() {
     if (props.delete === true) {
-      return () => props.onDelete(props.name, props.id);
+      return () => props.onDelete(props.wishlistid, props.product_id);
     }
   }
   return (
@@ -16,7 +16,9 @@ function WishListItem(props) {
       <div className="actions">
         <p className="price-text">{props.price}</p>
         <button className="add-to-cart">Add to Cart</button>
-        <button className="remove-from-wishlist">remove from wishlist</button>
+        <button onClick={deleteButton} className="remove-from-wishlist">
+          remove from wishlist
+        </button>
       </div>
     </div>
   );

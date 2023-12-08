@@ -2,6 +2,7 @@ import WishListItem from "../components/WishListItem";
 import "../styling/WishList.css";
 import { useState, useEffect } from "react";
 export default function WishList() {
+  const { wishlist_id } = useParams();
   const [products, setProducts] = useState([]);
   useEffect(() => {
     getProductList();
@@ -15,7 +16,7 @@ export default function WishList() {
     }
   }
   async function deleteItem(userID, productID) {
-    const response = await fetch(`/wishlist/${userID}/${productID}`, {
+    const response = await fetch(`/wishlist/${wishlist_id}/${productID}`, {
       method: "DELETE",
     });
     if (response.ok) {
@@ -31,13 +32,14 @@ export default function WishList() {
       </div>
       {products.map((product) => (
         <WishListItem
-          id={product.id}
+          wishlistid={wishlist_id}
+          product_id={product.id}
           name={product.name}
           image={product.image}
           rating={product.rating}
           amountOfRatings={product.rating_count}
           price={product.price}
-          onDelete={() => deleteItem()}
+          onDelete={() => deleteItem(wishlist_id, product.id)}
         />
       ))}
     </div>
