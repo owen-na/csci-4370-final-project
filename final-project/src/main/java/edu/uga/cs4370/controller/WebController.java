@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -101,7 +102,32 @@ public class WebController {
                 .header("Location", "/").body("ok");  // Redirect to the main page
     
     }
+    @GetMapping("products/{product_id}")
+    public Product getProduct(@PathVariable String product_id) {
+        Product prod = new Product();
+        try {
+            String query = "SELECT * FROM Product WHERE product_id = " +product_id;
+            PreparedStatement st =conn.prepareStatement(query);
+            ResultSet res = st.executeQuery();
+            if (res.next()) {
+                prod = new Product();
+                prod.product_id = ""+res.getInt("product_id");
+                prod.name = res.getString("name_desc");
+                prod.image = res.getString("image");
+                prod.stars = ""+res.getFloat("stars");
+                prod.rating_count = ""+res.getInt("rating_count");
+                prod.price = ""+res.getFloat("price");
+            }
+        } catch (SQLException sqle) {
+            // handle any errors
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+        }
+        return prod;
+    }
 }
+
 
 class Product {
     @JsonProperty("name")
