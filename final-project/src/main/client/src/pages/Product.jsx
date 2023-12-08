@@ -1,7 +1,7 @@
 import "../styling/Product.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-export default function Product() {
+export default function Product({isLoggedIn}) {
   const { productID } = useParams();
   const [product, setProduct] = useState(null);
 
