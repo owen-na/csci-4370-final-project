@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @RestController
 @RequestMapping("")
@@ -35,8 +36,8 @@ public class WebController {
     }
     
     @GetMapping("/products")
-    public List<List<String>> getProducts() {
-        List<List<String>> products = new ArrayList<>();
+    public List<Product> getProducts() {
+        List<Product> products = new ArrayList<>();
         try {
             PreparedStatement st = null;
             String query = "SELECT * FROM Product;";
@@ -45,15 +46,18 @@ public class WebController {
             
             int i = 0;
             while (res.next() && i < 50) {
-                List<String> item = new ArrayList<>();
-                item.add(""+res.getInt("product_id"));
-                item.add(res.getString("name_desc"));
-                item.add(res.getString("image"));
-                item.add(res.getString("link_amazon"));
-                item.add(""+res.getInt("rating_count"));
-                item.add(""+res.getFloat("price"));
-                item.add(""+res.getFloat("stars"));  
-                products.add(item);
+                Product prod = new Product();
+                prod.name = res.getString("name_desc");
+                prod.image = res.getString("image");
+                prod.stars = ""+res.getFloat("stars");
+                prod.rating_count = ""+res.getInt("rating_count");
+                prod.price = ""+res.getFloat("price");
+                //HashMap<String, String> item = new HashMap<>();
+                // item.put("name", res.getString("name_desc"));
+                // item.put("image", res.getString("image"));
+                // item.put("rating_count", ""+res.getInt("rating_count"));
+                // item.put("price", ""+res.getFloat("price"));
+                products.add(prod);
                 i++;
             }
 
@@ -67,4 +71,17 @@ public class WebController {
     } 
     
 
+}
+
+class Product {
+    @JsonProperty("name")
+    public String name;
+    @JsonProperty("stars")
+    public String stars;
+    @JsonProperty("rating_count")
+    public String rating_count;
+    @JsonProperty("image")
+    public String image;
+    @JsonProperty("price")
+    public String price;
 }
