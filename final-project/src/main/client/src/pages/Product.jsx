@@ -1,8 +1,11 @@
 import "../styling/Product.css";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 export default function Product() {
-  const { productID , user_id} = useParams();
+  const { productID } = useParams();
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const user_id = params.get("user_id");
   const [product, setProduct] = useState(null);
 
   useEffect(() => {

@@ -173,10 +173,29 @@ public class WebController {
     }
     @PostMapping("cart")
     public ResponseEntity<String> addCart(@RequestBody CartProduct cartProduct) {
-        System.out.println(cartProduct.user_id);
-        System.out.println(cartProduct.productID);
-        return null;
+        String query = "SELECT Cart.cart_id from Cart JOIN Customer ON Cart.cart_id = Customer.cart_id WHERE Customer.customer_id=" + cartProduct.user_id;
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet res = st.executeQuery();
+            if (res.next()) {
+                int cart = res.getInt("cart_id");
+                query = "INSERT INTO CartProduct(cart_id, product_id) VALUES (" + cart + "," + cartProduct.productID+")";
+                st = conn.prepareStatement(query);
+                st.execute();
+            }
+        } catch (SQLException sqle) {
+            // handle any errors
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+        }
 
+        return null;
+    }
+
+    @GetMapping("cart/{cart_id}")
+    public List<Product> getCart() {
+        return null;
     }
 
 }
