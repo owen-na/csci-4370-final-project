@@ -1,7 +1,0 @@
-.logo-button {
-    all: unset;
-}
-
-.logo-button:focus {
-    outline: revert;
-} 
