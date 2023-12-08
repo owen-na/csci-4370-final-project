@@ -18,14 +18,16 @@ const Main = () => {
     <main>
       <div className="product-holder">
         {products.map((product) => (
-          <Product
-            id={product.id}
-            name={product.name}
-            image={product.image}
-            rating={product.rating}
-            amountOfRatings={product.rating_count}
-            price={product.price}
-          />
+          <Link key={product.id} to={`/product/${product.id}`}>
+            <Product
+              id={product.id}
+              name={product.name}
+              image={product.image}
+              rating={product.rating}
+              ratingcount={product.rating_count}
+              price={product.price}
+            />
+          </Link>
         ))}
         <Link to="/pages/WishList">wishlist</Link>
       </div>

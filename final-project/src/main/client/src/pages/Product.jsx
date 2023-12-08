@@ -1,16 +1,38 @@
 import "../styling/Product.css";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 export default function Product(props) {
+  const { productID } = useParams();
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    // Fetch the product details based on productID
+    async function fetchProductDetails() {
+      try {
+        const res = await fetch(`/products/${productID}`);
+        setProduct(await res.json());
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+      }
+    }
+
+    fetchProductDetails();
+  }, [productID]);
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="page">
       <div className="product-name">
-        <p>⭐⭐⭐⭐⭐ (number_ratings)</p>
+        <p>⭐⭐⭐⭐⭐ {product.ratingcount}</p>
       </div>
       <div className="middle-section">
-        <img src={props.image} alt={props.name}></img>
+        <img src={product.image} alt={product.name}></img>
         <div className="info">
-          <text>{props.name}</text>
+          <text>{product.name}</text>
           <div className="actions">
-            <p>{props.price}</p>
+            <p>{product.price}</p>
             <button>ADD TO CART</button>
             <button>ADD TO WISHLIST</button>
           </div>
