@@ -18,15 +18,8 @@ const Main = () => {
     <main>
       <div className="product-holder">
         {products.map((product) => (
-          <Link key={product.id} to={`/product/${product.id}`}>
-            <Product
-              id={product.product_id}
-              name={product.name}
-              image={product.image}
-              rating={product.rating}
-              ratingcount={product.rating_count}
-              price={product.price}
-            />
+          <Link key={product.id} to={`/product/${product.product_id}`}>
+            <Product />
           </Link>
         ))}
         <Link to="/pages/WishList">wishlist</Link>
