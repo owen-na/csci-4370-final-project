@@ -22,7 +22,7 @@ const Main = () => {
             name={product.name}
             image={product.image}
             rating={product.rating}
-            amountOfRatings={product.amountofRatings}
+            amountOfRatings={product.rating_count}
             price={product.price}
           />;
         })}
