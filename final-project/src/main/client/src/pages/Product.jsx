@@ -6,11 +6,11 @@ export default function Product(props) {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    // Fetch the product details based on productID
     async function fetchProductDetails() {
       try {
         const res = await fetch(`/products/${productID}`);
-        setProduct(await res.json());
+        const data = await res.json();
+        setProduct(data);
       } catch (error) {
         console.error("Error fetching product details:", error);
       }
