@@ -18,11 +18,13 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -218,6 +220,14 @@ public class WebController {
             System.out.println("VendorError: " + sqle.getErrorCode());
         }
         return products;
+    }
+
+    @DeleteMapping("cart/{product_id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable("product_id") String product_id, @RequestParam("user_id") String user_id) {
+        System.out.println(product_id);
+        System.out.println(user_id);
+        System.out.println("clciked");
+        return null;
     }
 
 }

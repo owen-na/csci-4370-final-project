@@ -18,7 +18,7 @@ export default function Cart() {
       console.log(err);
     }
   }
-  async function deleteItem(product_id) {
+  async function deleteItem(product_id, user_id) {
     const response = await fetch(`/cart/${product_id}?user_id=${user_id}`, {
       method: "DELETE",
     });
@@ -44,7 +44,7 @@ export default function Cart() {
             price={product.price}
             cart_id={user_id}
             product_id={product.id}
-            onDelete={() => deleteItem(product.id)}
+            onDelete={() => deleteItem(product.id, user_id)}
           />
         ))}
         {/* some sort of function to load these as intended instead of statically */}
