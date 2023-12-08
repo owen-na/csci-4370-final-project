@@ -1,10 +1,9 @@
 .logo-button {
-    all: unset;
+  all: unset;
 }
 
 .logo-button:focus {
-    outline: revert;
-} 
+  outline: revert;
+}
 header {
-    margin-bottom: 10%;
 }
