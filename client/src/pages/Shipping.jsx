@@ -1,3 +1,4 @@
+import "../styling/Shipping.css";
 export default function Shipping() {
   return (
     <div>
