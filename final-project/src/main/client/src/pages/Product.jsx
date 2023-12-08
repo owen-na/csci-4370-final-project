@@ -22,6 +22,40 @@ export default function Product() {
     fetchProductDetails();
   }, [productID]);
 
+  async function handleCartSubmit(event) {
+    event.preventDefault();
+    const response = await fetch("http://localhost:8080/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product }),
+    });
+
+    if (response.ok) {
+      console.log("Received response from server");
+    } else {
+      console.error("Error while sending POST request");
+    }
+  }
+  async function handleWishlistSubmit(event) {
+    event.preventDefault();
+    const response = await fetch("http://localhost:8080/wishlist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product }),
+    });
+
+    if (response.ok) {
+      console.log("Received response from server");
+    } else {
+      console.error("Error while sending POST request");
+    }
+  }
+
+  // if there is not product return loading text
   if (!product) {
     console.error("Product data is null");
     return <div>Loading...</div>;
@@ -37,8 +71,8 @@ export default function Product() {
           <text>{product.name}</text>
           <div className="actions">
             <p>{product.price}</p>
-            <button>ADD TO CART</button>
-            <button>ADD TO WISHLIST</button>
+            <button onclick={handleCartSubmit()}>ADD TO CART</button>
+            <button onclick={handleWishlistSubmit}>ADD TO WISHLIST</button>
           </div>
         </div>
       </div>
