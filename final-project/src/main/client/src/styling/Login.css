@@ -1,0 +1,65 @@
+/* Body Styles */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Login Container Styles */
+.sign-in-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styles */
+h1 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Input Field Styles */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit Button Styles */
+button[type="submit"] {
+  width: 100%;
+  margin: 20px 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #222222;
+}
+
+/* Sign Up Link Styles */
+p {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #222222;
+  text-decoration: none;
+}
