@@ -30,16 +30,13 @@ const Header = () => {
   return (
     <header>
       <div className="wrapper">
-        <Link to="/">
-          <div className="logo-wrapper">
-            <button className="logo-button">
-              <img src={logo} alt="temo logo"></img>
-            </button>
-          </div>
-        </Link>
-        <Link to="pages/SignUp">
-          <button>Login/Register</button>
-        </Link>
+        <div className="logo-wrapper">
+          <button className="logo-button">
+            <img src={logo} alt="temo logo"></img>
+          </button>
+        </div>
+       <Link to="pages/SignUp"><button>Register</button></Link>
+       <Link to="pages/Login"><button>Login</button></Link>
       </div>
     </header>
   );

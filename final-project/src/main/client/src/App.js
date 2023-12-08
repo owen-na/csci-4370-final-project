@@ -6,6 +6,8 @@ import Cart from "./pages/Cart.jsx";
 import Shipping from "./pages/Shipping.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Product from "./pages/Product.jsx";
+import Login from "./pages/Login.jsx";
+import User from "./pages/User.jsx";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="pages/Shipping" element={<Shipping />} />
         <Route path="pages/product/:productID" element={<Product />} />
         <Route path="pages/SignUp" element={<SignUp />} />
+        <Route path="pages/Login" element={<Login />} />
+        <Route path="pages/user/:user_id" element={<User/>} />
       </Routes>
     </>
   );
