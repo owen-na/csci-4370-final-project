@@ -11,7 +11,8 @@ export default function User() {
           <main>
             <div>
               <button>View Your Cart</button>
-              <button>View Wishlist</button>
+              <button>Add A Wishlist</button>
+              <button>View your Wishlist</button>
               <button>View Purchase History</button>
             </div>
           </main>

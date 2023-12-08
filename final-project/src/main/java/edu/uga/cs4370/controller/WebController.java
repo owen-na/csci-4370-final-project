@@ -94,6 +94,24 @@ public class WebController {
             username + "\",\"" + hashPassword + "\",\"" + name+ "\", " + "NULL);";
             PreparedStatement st = conn.prepareStatement(query);
             st.execute();
+            query = "SELECT customer_id FROM Customer WHERE username = \"" +username+"\"";
+            st = conn.prepareStatement(query);
+            ResultSet res = st.executeQuery();
+            if (res.next()) {
+                int cust_id = res.getInt("customer_id");
+                query = "INSERT INTO Cart(customer_id) VALUES ("+ cust_id +")";
+                st = conn.prepareStatement(query);
+                st.execute();
+                query = "SELECT cart_id FROM Cart WHERE customer_id = " + cust_id;
+                st = conn.prepareStatement(query);
+                res = st.executeQuery();
+                if (res.next()) {
+                    query = "UPDATE Customer SET cart_id = "+ res.getInt("cart_id") +" WHERE customer_id = " + cust_id;
+                    st = conn.prepareStatement(query);
+                    st.execute();
+                }
+
+            }
         } catch (SQLException sqle) {
              // handle any errors
             System.out.println("SQLException: " + sqle.getMessage());
@@ -104,7 +122,7 @@ public class WebController {
                 .header("Location", "/").body("ok");  // Redirect to the main page
     
     }
-    @GetMapping("product/{product_id}")
+    @GetMapping("products/{product_id}")
     public Product getProduct(@PathVariable String product_id) {
         Product prod = new Product();
         try {
