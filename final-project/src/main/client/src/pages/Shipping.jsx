@@ -2,7 +2,7 @@ import "../styling/Shipping.css";
 export default function Shipping() {
   return (
     <div className="shipping-container">
-      <div className="shipping-header">
+      <div className>
         <h1>Shipping Information</h1>
       </div>
       <form action="/shipping">
@@ -20,6 +20,28 @@ export default function Shipping() {
 
         <label for="zipcode">Zipcode</label>
         <input type="text" id="zipcode"></input>
+        <h1> Payment Information</h1>
+
+        <label for="paddress">Street Address</label>
+        <input type="text" id="pstreet-address"></input>
+
+        <label for="ptown-city">Town/City</label>
+        <input type="text" id="ptown-city"></input>
+
+        <label for="pcountry">Country</label>
+        <input type="text" id="pcountry"></input>
+
+        <label for="pstate">State</label>
+        <input type="text" id="pstate"></input>
+
+        <label for="pzipcode">Zipcode</label>
+        <input type="text" id="pzipcode"></input>
+        <label for="name">Name</label>
+        <input type="text" id="name"></input>
+        <label for="cardnumber">Card Number</label>
+        <input type="text" id="cardnumber"></input>
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv"></input>
         <input type="submit" value="Submit"></input>
       </form>
     </div>
