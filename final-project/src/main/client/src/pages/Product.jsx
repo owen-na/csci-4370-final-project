@@ -6,10 +6,13 @@ export default function Product() {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    console.log("Fetching product details for ID:", productID);
+
     async function fetchProductDetails() {
       try {
-        const res = await fetch(`/product/${productID}`);
+        const res = await fetch(`/products/${productID}`);
         const data = await res.json();
+        console.log("Fetched Product Data:", data);
         setProduct(data);
       } catch (error) {
         console.error("Error fetching product details:", error);
@@ -19,6 +22,10 @@ export default function Product() {
     fetchProductDetails();
   }, [productID]);
 
+  if (!product) {
+    console.error("Product data is null");
+    return <div>Loading...</div>;
+  }
   return (
     <div className="page">
       <div className="product-name">

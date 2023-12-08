@@ -18,7 +18,7 @@ const Main = () => {
     <main>
       <div className="product-holder">
         {products.map((product) => (
-          <Link key={product.id} to={`/product/${product.product_id}`}>
+          <Link key={product.id} to={`/pages/product/${product.product_id}`}>
             <Product
               id={product.product_id}
               name={product.name}
