@@ -10,9 +10,9 @@ export default function Cart() {
       const res = await fetch(`/cart/${user_id}`, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
-        });
+      });
       setCartProducts(await res.json());
     } catch (err) {
       console.log(err);
@@ -42,9 +42,10 @@ export default function Cart() {
             name={product.name}
             image={product.image}
             price={product.price}
-            cart_id={user_id}
-            product_id={product.id}
-            onDelete={() => deleteItem(product.id, user_id)}
+            user_id={user_id}
+            product_id={product.product_id}
+            delete={true}
+            onDelete={() => deleteItem(product.product_id, user_id)}
           />
         ))}
         {/* some sort of function to load these as intended instead of statically */}

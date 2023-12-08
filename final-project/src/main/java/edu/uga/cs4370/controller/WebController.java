@@ -39,7 +39,7 @@ public class WebController {
       this.conn =
         DriverManager.getConnection(
           "jdbc:mysql://localhost:33306/itstore?" +
-          "user=root&password=Lekhoa699"
+          "user=root&password=mysqlpass"
         );
       System.out.println("Connection successful");
     } catch (SQLException sqle) {
@@ -252,7 +252,7 @@ public class WebController {
     return products;
   }
 
-  @DeleteMapping("cart/{product_id}?user_id={user_id}")
+  @DeleteMapping("cart/{product_id}")
   public ResponseEntity<String> deleteProduct(
     @PathVariable("product_id") String product_id,
     @RequestParam("user_id") String user_id

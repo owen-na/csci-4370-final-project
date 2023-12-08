@@ -1,11 +1,11 @@
 import "../styling/CartItem.css";
 
 function CartItem(props) {
-  function deleteButton() {
-    if (props.delete === true) {
-      return () => props.onDelete(props.cart_id, props.product_id);
+  const deleteButton = () => {
+    if (props.delete) {
+      props.onDelete(props.product_id, props.user_id);
     }
-  }
+  };
   return (
     <div className="card">
       <img className="product-image" src={props.image} alt="product"></img>
