@@ -21,15 +21,16 @@ export default function Cart() {
         <h1>Cart</h1>
       </div>
       <div className="item-list">
-      {cartProducts.map((product) => {
-        <CartItem
-          name={product.name}
-          image={product.image}
-          price={product.price}
-        />;
-      })}
-      {/* some sort of function to load these as intended instead of statically */}
-      <button className="checkout-button">PROCEED TO CHECKOUT</button>
+        {cartProducts.map((product) => {
+          <CartItem
+            name={product.name}
+            image={product.image}
+            price={product.price}
+          />;
+        })}
+        {/* some sort of function to load these as intended instead of statically */}
+        <button className="checkout-button">PROCEED TO CHECKOUT</button>
+      </div>
     </div>
   );
 }
