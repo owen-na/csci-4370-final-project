@@ -18,7 +18,7 @@ export default function PaymentHistory() {
   }, []);
   return (
     <>
-      <div>
+      <div className="h1-container">
         <h1>Payment History</h1>
       </div>
       {payProducts.map((product) => (

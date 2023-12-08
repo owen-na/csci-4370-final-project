@@ -49,7 +49,7 @@ export default function Order(props) {
   return (
     <>
       <div>
-        <div>
+        <div className="h1-container">
           <h1>
             Order {props.order_id} {orderInformation.date}
           </h1>
