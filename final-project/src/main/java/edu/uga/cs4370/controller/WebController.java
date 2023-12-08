@@ -9,11 +9,19 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 @RestController
 @RequestMapping("")
@@ -70,7 +78,28 @@ public class WebController {
         return products;
     } 
     
-
+    @PostMapping("register")
+    public ResponseEntity<String> createAccount(@RequestBody User user) {
+        String password = user.password;
+        String salt = BCrypt.gensalt();
+        String hashPassword = BCrypt.hashpw(password, salt);
+        String username = user.username;
+        String name = user.name;
+        try {
+            String query = "INSERT INTO Customer (username, password, name, cart_id) VALUES (\"" + 
+            username + "\",\"" + hashPassword + "\",\"" + name+ "\", " + "NULL);";
+            PreparedStatement st = conn.prepareStatement(query);
+            st.execute();
+        } catch (SQLException sqle) {
+             // handle any errors
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+        }
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header("Location", "/").body("ok");  // Redirect to the main page
+    
+    }
 }
 
 class Product {
@@ -84,4 +113,9 @@ class Product {
     public String image;
     @JsonProperty("price")
     public String price;
+}
+class User {
+    public String username;
+    public String password;
+    public String name;
 }

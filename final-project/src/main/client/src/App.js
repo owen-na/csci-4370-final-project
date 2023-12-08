@@ -4,6 +4,7 @@ import Main from "./pages/Main.jsx";
 import Wishlist from "./pages/WishList.jsx";
 import Cart from "./pages/Cart.jsx";
 import Shipping from "./pages/Shipping.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import Product from "./pages/Product.jsx";
 import { Routes, Route } from "react-router-dom";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="pages/Cart" element={<Cart />} />
         <Route path="pages/Shipping" element={<Shipping />} />
         <Route path="pages/Product:productID" element={<Product />} />
+        <Route path="pages/SignUp" element={<SignUp />} />
       </Routes>
     </>
   );
