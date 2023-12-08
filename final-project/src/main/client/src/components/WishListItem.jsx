@@ -1,15 +1,15 @@
 import "../styling/WishListItem.css";
 
-function WishListItem() {
+function WishListItem(props) {
   return (
     <div className="main">
-      <img className="product-image" alt="item-image"></img>
+      <img className="product-image" src={props.image} alt="item-image"></img>
       <div className="middle-section">
-        <p>Product Name</p>
-        <p>⭐⭐⭐⭐⭐ (number_ratings)</p>
+        <p>{props.name}</p>
+        <p>⭐⭐⭐⭐⭐ {props.amountOfRatings}</p>
       </div>
       <div className="actions">
-        <p className="price-text">$price</p>
+        <p className="price-text">{props.price}</p>
         <button className="add-to-cart">Add to Cart</button>
         <button className="remove-from-wishlist">remove from wishlist</button>
       </div>

@@ -1,3 +1,4 @@
+import "../styling/Product.css";
 export default function Product(props) {
   return (
     <div className="page">
