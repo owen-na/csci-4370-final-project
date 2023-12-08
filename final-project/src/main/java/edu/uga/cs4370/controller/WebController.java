@@ -193,9 +193,31 @@ public class WebController {
         return null;
     }
 
-    @GetMapping("cart/{cart_id}")
-    public List<Product> getCart() {
-        return null;
+    @GetMapping("cart/{user_id}")
+    public List<Product> getCart(@PathVariable String user_id) {
+        List<Product> products = new ArrayList<>();
+        String query = "SELECT * FROM CartProduct JOIN Product ON CartProduct.product_id = Product.product_id " + 
+        "JOIN Cart ON CartProduct.cart_id = Cart.cart_id WHERE Cart.customer_id =" + user_id;
+        try {
+            PreparedStatement st = conn.prepareStatement(query);
+            ResultSet res = st.executeQuery();
+            while (res.next()) {
+                Product prod = new Product();
+                prod.product_id = ""+res.getInt("product_id");
+                prod.name = res.getString("name_desc");
+                prod.image = res.getString("image");
+                prod.stars = ""+res.getFloat("stars");
+                prod.rating_count = ""+res.getInt("rating_count");
+                prod.price = ""+res.getFloat("price");
+                products.add(prod);
+            }
+        } catch (SQLException sqle) {
+             // handle any errors
+            System.out.println("SQLException: " + sqle.getMessage());
+            System.out.println("SQLState: " + sqle.getSQLState());
+            System.out.println("VendorError: " + sqle.getErrorCode());
+        }
+        return products;
     }
 
 }
