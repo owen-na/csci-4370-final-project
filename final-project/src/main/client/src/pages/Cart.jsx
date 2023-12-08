@@ -1,12 +1,13 @@
 import CartItem from "../components/CartItem";
 import "../styling/Cart.css";
 import { useState, useEffect } from "react";
-
+import { useParams } from "react-router-dom";
 export default function Cart() {
   const [cartProducts, setCartProducts] = useState([]);
+  const { cart_id } = useParams();
   async function getCartItems() {
     try {
-      const res = await fetch("/cart");
+      const res = await fetch(`/cart/${cart_id}`);
       setCartProducts(await res.json());
     } catch (err) {
       console.log(err);
