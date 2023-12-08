@@ -3,6 +3,7 @@
 # dependencies
 /final-project/src/main/client/node_modules
 /final-project/src/main/client/node
+/final-project/src/main/client/build
 /.pnp
 .pnp.js
 /node_modules
